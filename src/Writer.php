@@ -59,7 +59,9 @@ class Writer
                     }
                 }
 
-                $inbetweenString = ", \n";
+                $inbetweenString = '';
+                for($j=0;$j < $depth +1; $j++) $inbetweenString .= "\t";
+                $inbetweenString .= ", \n";
                 for($j=0;$j < $depth +1; $j++) $inbetweenString .= "\t";
                 $string .= implode($inbetweenString, $array);
 
