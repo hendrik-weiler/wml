@@ -1,0 +1,12 @@
+Object
+	Key Value
+	Key2 Value2
+	Object2
+		Key3 Value3
+		Object
+			Key4 Value4
+Key Value
+Array {
+	1,
+	value2
+}

@@ -1,0 +1,27 @@
+# Simple key, value
+Key Value
+# Object
+Object
+	MyObjectKey MyValue
+# Lists
+List {
+	1,2,3,4
+}
+# List with objects
+List2 {
+	{
+		MyListObjKey MyValue
+		MyListObj
+			MyObjKey MyValue
+	}
+}
+# You can stack objects and lists
+Object1
+	Object2
+		Key Value
+	List { 1,2,3,4 }
+# Its possible to mark objects with a classname for
+# later processing of the data
+User : User
+	Username Max
+	LastLogin 2021-02-15

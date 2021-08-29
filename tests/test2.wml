@@ -1,0 +1,41 @@
+Key3 Value2222
+# Another comment
+Object : Class
+	Key Value
+	Key2 {
+		1,"2" ,3
+		,4
+	}
+	Fulltext "
+		Im a \"fulltext\".
+		With multiple rows.
+	"
+	Object2
+		# This is a comment
+		# Another comment
+		Key3 Value4
+		Object3 : Map
+			Key6 Val66
+			Key7 {
+				1,2,34
+			}
+			Key9 Val223
+	Obj3
+		Key6 Value2222
+Key4 Value5
+Key6 Vale22
+List {
+	"1 is a \"test\"
+	this is a test", {
+		Key102 Value 22
+		Object3
+			Key77 Val66
+			List2 {
+				{
+					Key222 Val2333
+				}
+			}
+	},
+	"4 hello
+	test"
+}
