@@ -47,7 +47,7 @@ User : User
 The output in php:
 
 ```
-array(2) {
+array(1) {
   ["children"]=>
   array(6) {
     ["Key"]=>
@@ -136,7 +136,5 @@ array(2) {
       string(4) "User"
     }
   }
-  ["class"]=>
-  string(0) ""
 }
 ```

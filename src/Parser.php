@@ -242,10 +242,7 @@ class Parser
      * @return array
      */
     public static function parse($text) {
-        $object = array(
-            'children' => array(),
-            'class' => ''
-        );
+        $object = array();
         static::parseObject($object,$text,0);
         return $object;
     }
