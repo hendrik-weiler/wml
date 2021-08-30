@@ -25,3 +25,12 @@ Object1
 User : User
 	Username Max
 	LastLogin 2021-02-15
+Object5
+	Key Value
+	Object2
+		Key2 Value2
+		Object3
+			Key3 Value3
+			List {
+				1,2,3,4
+			}

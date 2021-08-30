@@ -14,6 +14,20 @@ In the ```read.php``` or ```write.php``` file is the usage example in php.
 
 ###### Basic usage:
 
+The format is using idents for depth levels like python does.
+```
+Object1
+    Key Value
+    Object2
+        Key2 Value2
+        Object3
+            Key3 Value3
+            List {
+                1,2,3,4
+            }
+```
+
+###### Examples:
 ```
 # Simple key, value
 Key Value
