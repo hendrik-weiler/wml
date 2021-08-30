@@ -6,7 +6,7 @@ require_once 'src/Parser.php';
 use \wml\Parser as Parser;
 use \wml\Writer as Writer;
 
-$text = file_get_contents('tests/test3.wml');
+$text = file_get_contents('tests/test4.wml');
 
 $parsed = Parser::parse($text);
 

@@ -106,7 +106,7 @@ class Parser
                         continue;
                     }
                     $isLastChar = $text[$i+1] == '}' && $inArrayDepth<=0;
-                    if($key == ',' || $isLastChar) {
+                    if($key == ',' && $inArrayDepth<=0 || $isLastChar) {
                         if($isLastChar) $currentArrayValue .= $key;
                         $value = trim($currentArrayValue);
                         if(preg_match('#^{#',$value)) {
