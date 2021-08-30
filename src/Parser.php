@@ -195,7 +195,7 @@ class Parser
                     continue;
                 }
                 if($key == "\n") {
-                    if(empty($currentObjKey)) continue;
+                    if($currentObjKey == '') continue;
                     $inObject = true;
                     $object[$currentObjKey] = array(
                         '__class__' => ''
@@ -220,7 +220,7 @@ class Parser
                     $objClass = true;
                 }
                 if($key == "\n" || $i == strlen($text)-1) {
-                    if(empty($currentObjKey)) continue;
+                    if($currentObjKey == '') continue;
                     $object[$currentObjKey] = $currentObjValue;
                     $currentObjKey = '';
                     $currentObjValue = '';

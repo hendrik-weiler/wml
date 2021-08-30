@@ -37,7 +37,6 @@ class Writer
      */
     protected static function writeObject(&$string, $object, $depth) {
         foreach($object as $key => $value) {
-        	if($key == '__class__') continue;
             for($i=0; $i < $depth ; ++$i) {
                 $string .= "\t";
             }
@@ -81,6 +80,7 @@ class Writer
 
                 $string .= '}' . "\n";
             } else {
+				if($key == '__class__') continue;
                 $string .= $key . ' "' . preg_replace('#"#','\"',$value) . "\"\n";
             }
         }
