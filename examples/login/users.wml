@@ -1,0 +1,12 @@
+Users {
+	{
+		Username "max.mustermann"
+		DisplayName "Max Mustermann"
+		Password "abc123"
+	},
+	{
+		Username "maxim.mustermann"
+		DisplayName "Maxim Mustermann"
+		Password "12345678"
+	}
+}
