@@ -1,6 +1,6 @@
 # wml
 
-This library provides a markup language for reading and writing in php.
+This library provides a markup language for reading and writing data in php.
 
 ### Files
 
@@ -14,7 +14,7 @@ In the ```read.php``` or ```write.php``` file is the usage example in php.
 
 ###### Basic usage:
 
-The format is using idents for depth levels like python does.
+The format is using indents for depth levels like python does.
 ```
 Object1
     Key Value
