@@ -4,7 +4,7 @@ Copyright 2021 Hendrik Weiler
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-Version: 0.6.0
+Version: 0.6.1
 */
 
 namespace wml;
@@ -90,7 +90,7 @@ class Parser
                         continue;
                     }
                     if($key == '"' && $text[$i-1] != '\\') {
-                        $object['children'][$currentObjKey][] = trim($currentObjValue);
+                        $object[$currentObjKey][] = trim($currentObjValue);
                         $inMultipleRowsModeArray = false;
                         continue;
                     }
@@ -110,18 +110,18 @@ class Parser
                         if($isLastChar) $currentArrayValue .= $key;
                         $value = trim($currentArrayValue);
                         if(preg_match('#^{#',$value)) {
-                            $index = count($object['children'][$currentObjKey]);
+                            $index = count($object[$currentObjKey]);
                             $split = explode("\n",$value);
                             array_shift($split);
                             $parseableValue = implode("\n", $split);
                             $firstValue = array_shift($split);
                             $tabDepth = substr_count($firstValue, "\t");
                             $res = static::getObjectText($parseableValue, 0,$tabDepth);
-                            static::parseObject($object['children'][$currentObjKey][$index], $res['text'],$tabDepth);
+                            static::parseObject($object[$currentObjKey][$index], $res['text'],$tabDepth);
 
                         } else {
                             if(empty($value)) continue;
-                            $object['children'][$currentObjKey][] = $value;
+                            $object[$currentObjKey][] = $value;
                         }
                         $currentArrayValue = '';
                     } else {
@@ -149,7 +149,7 @@ class Parser
 
             } else if($inObject) {
                 $res = static::getObjectText($text, $i,$depth+1);
-                static::parseObject($object['children'][$currentObjKey], $res['text'],$depth+1);
+                static::parseObject($object[$currentObjKey], $res['text'],$depth+1);
                 $inObject = false;
                 $objClass = false;
                 $inValue = false;
@@ -162,7 +162,7 @@ class Parser
                     continue;
                 }
                 if($key == '"' && $text[$i-1] != '\\') {
-                    $object['children'][$currentObjKey] = trim($currentObjValue);
+                    $object[$currentObjKey] = trim($currentObjValue);
                     $currentObjKey = '';
                     $currentObjValue = '';
                     $inValue = false;
@@ -177,9 +177,8 @@ class Parser
                 if($key == "\n") {
                     $inObject = true;
                     $objClass = false;
-                    $object['children'][$currentObjKey] = array(
-                        'children' => array(),
-                        'class' => $currentObjClass
+                    $object[$currentObjKey] = array(
+                        '__class__' => $currentObjClass
                     );
                     $currentObjClass = '';
                 }
@@ -198,9 +197,8 @@ class Parser
                 if($key == "\n") {
                     if(empty($currentObjKey)) continue;
                     $inObject = true;
-                    $object['children'][$currentObjKey] = array(
-                        'children' => array(),
-                        'class' => ''
+                    $object[$currentObjKey] = array(
+                        '__class__' => ''
                     );
                 } else {
                     if($key != "\t") {
@@ -209,7 +207,7 @@ class Parser
                 }
             } else {
                 if($key == '{') {
-                    $object['children'][$currentObjKey] = array();
+                    $object[$currentObjKey] = array();
                     $inArray = true;
                     $inArrayDepth = 0;
                     continue;
@@ -223,7 +221,7 @@ class Parser
                 }
                 if($key == "\n" || $i == strlen($text)-1) {
                     if(empty($currentObjKey)) continue;
-                    $object['children'][$currentObjKey] = $currentObjValue;
+                    $object[$currentObjKey] = $currentObjValue;
                     $currentObjKey = '';
                     $currentObjValue = '';
                     $inValue = false;

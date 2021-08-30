@@ -61,20 +61,52 @@ User : User
 The output in php:
 
 ```
-array(1) {
-  ["children"]=>
-  array(6) {
-    ["Key"]=>
-    string(5) "Value"
-    ["Object"]=>
+array(7) {
+  ["Key"]=>
+  string(5) "Value"
+  ["Object"]=>
+  array(2) {
+    ["__class__"]=>
+    string(0) ""
+    ["MyObjectKey"]=>
+    string(7) "MyValue"
+  }
+  ["List"]=>
+  array(4) {
+    [0]=>
+    string(1) "1"
+    [1]=>
+    string(1) "2"
+    [2]=>
+    string(1) "3"
+    [3]=>
+    string(1) "4"
+  }
+  ["List2"]=>
+  array(1) {
+    [0]=>
     array(2) {
-      ["children"]=>
-      array(1) {
-        ["MyObjectKey"]=>
+      ["MyListObjKey"]=>
+      string(7) "MyValue"
+      ["MyListObj"]=>
+      array(2) {
+        ["__class__"]=>
+        string(0) ""
+        ["MyObjKey"]=>
         string(7) "MyValue"
       }
-      ["class"]=>
+    }
+  }
+  ["Object1"]=>
+  array(3) {
+    ["__class__"]=>
+    string(0) ""
+    ["Object2"]=>
+    array(2) {
+      ["__class__"]=>
       string(0) ""
+      ["Key"]=>
+      string(5) "Value"
     }
     ["List"]=>
     array(4) {
@@ -87,41 +119,34 @@ array(1) {
       [3]=>
       string(1) "4"
     }
-    ["List2"]=>
-    array(1) {
-      [0]=>
-      array(1) {
-        ["children"]=>
-        array(2) {
-          ["MyListObjKey"]=>
-          string(7) "MyValue"
-          ["MyListObj"]=>
-          array(2) {
-            ["children"]=>
-            array(1) {
-              ["MyObjKey"]=>
-              string(7) "MyValue"
-            }
-            ["class"]=>
-            string(0) ""
-          }
-        }
-      }
-    }
-    ["Object1"]=>
-    array(2) {
-      ["children"]=>
-      array(2) {
-        ["Object2"]=>
-        array(2) {
-          ["children"]=>
-          array(1) {
-            ["Key"]=>
-            string(5) "Value"
-          }
-          ["class"]=>
-          string(0) ""
-        }
+  }
+  ["User"]=>
+  array(3) {
+    ["__class__"]=>
+    string(4) "User"
+    ["Username"]=>
+    string(3) "Max"
+    ["LastLogin"]=>
+    string(10) "2021-02-15"
+  }
+  ["Object5"]=>
+  array(3) {
+    ["__class__"]=>
+    string(0) ""
+    ["Key"]=>
+    string(5) "Value"
+    ["Object2"]=>
+    array(3) {
+      ["__class__"]=>
+      string(0) ""
+      ["Key2"]=>
+      string(6) "Value2"
+      ["Object3"]=>
+      array(3) {
+        ["__class__"]=>
+        string(0) ""
+        ["Key3"]=>
+        string(6) "Value3"
         ["List"]=>
         array(4) {
           [0]=>
@@ -134,20 +159,6 @@ array(1) {
           string(1) "4"
         }
       }
-      ["class"]=>
-      string(0) ""
-    }
-    ["User"]=>
-    array(2) {
-      ["children"]=>
-      array(2) {
-        ["Username"]=>
-        string(3) "Max"
-        ["LastLogin"]=>
-        string(9) "2021-02-1"
-      }
-      ["class"]=>
-      string(4) "User"
     }
   }
 }

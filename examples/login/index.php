@@ -11,23 +11,23 @@ if(isset($_GET['auth'])) {
 	$request_body = file_get_contents('php://input');
 
 	$obj = Parser::parse($request_body);
-	$login = $obj['children']['Login']['children'];
+	$login = $obj['Login'];
 
 	$users = file_get_contents('users.wml');
 	$users_parsed = Parser::parse($users);
 
 	$foundUser = NULL;
-	foreach($users_parsed['children']['Users'] as $user) {
-		if($user['children']['Username'] == $login['Username']
-			&& $user['children']['Password'] == $login['Password']) {
+	foreach($users_parsed['Users'] as $user) {
+		if($user['Username'] == $login['Username']
+			&& $user['Password'] == $login['Password']) {
 			$foundUser = $user;
 			break;
 		}
 	}
 
 	if(!is_null($foundUser)) {
-		unset($foundUser['children']['Password']);
-		$_SESSION['user'] = $foundUser['children'];
+		unset($foundUser['Password']);
+		$_SESSION['user'] = $foundUser;
 		print 1;
 	}
 
